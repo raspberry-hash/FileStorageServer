@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload File</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="fileInput" class="file-upload-label">
+                    <span id="fileName">No file chosen</span>
+                    <input type="file" id="fileInput" name="file" required>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="addExpiration">
+                    <input type="checkbox" id="addExpiration" name="addExpiration"> Add Expiration Date
+                </label>
+            </div>
+            <div class="form-group" id="expirationGroup" style="display: none;">
+                <label for="expiration">Expiration Date (YYYY-MM-DD):</label>
+                <input type="date" id="expiration" name="expiration">
+            </div>
+            <button type="submit">Upload</button>
+        </form>
+        <div id="message"></div>
+        <div id="linkSection" style="display: none;">
+            <h2>File Uploaded Successfully</h2>
+            <p><strong>File Info Page Link:</strong></p>
+            <span id="fileInfoLink"></span>
+            <button id="copyLinkButton">Copy Link</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('addExpiration').addEventListener('change', function() {
+            const expirationGroup = document.getElementById('expirationGroup');
+            expirationGroup.style.display = this.checked ? 'block' : 'none';
+        });
+
+        document.getElementById('fileInput').addEventListener('change', function() {
+            const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
+            document.getElementById('fileName').textContent = fileName;
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('file', document.getElementById('fileInput').files[0]);
+            const expirationDate = document.getElementById('expiration').value;
+            const addExpiration = document.getElementById('addExpiration').checked;
+
+            formData.append('expiration', addExpiration ? expirationDate : '');
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText);
+                }
+
+                const result = await response.json();
+                const fileInfoPageUrl = `${window.location.origin}/file/${result.fileId}`;
+
+                document.getElementById('message').textContent = 'File uploaded successfully!';
+                document.getElementById('fileInfoLink').textContent = fileInfoPageUrl;
+                document.getElementById('fileInfoLink').innerHTML = `<a href="${fileInfoPageUrl}" target="_blank">${fileInfoPageUrl}</a>`;
+                document.getElementById('linkSection').style.display = 'block';
+            } catch (error) {
+                document.getElementById('message').textContent = `Error uploading file: ${error.message}`;
+            }
+        });
+
+        document.getElementById('copyLinkButton').addEventListener('click', () => {
+            const fileInfoPageUrl = document.getElementById('fileInfoLink').textContent;
+            navigator.clipboard.writeText(fileInfoPageUrl).then(() => {
+                alert('Link copied to clipboard!');
+            }, (err) => {
+                console.error('Failed to copy link: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
