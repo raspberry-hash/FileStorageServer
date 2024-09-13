@@ -1,0 +1,431 @@
+/* Reset some default styles */
+body, h1, form, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full height container with centered content */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Match the max-width of other elements */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Center and style the header */
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Style form groups */
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Custom file input styling */
+.file-upload-label {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    max-width: 300px; /* Consistent with the container */
+    height: 48px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    background: #f5f5f5;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 28px;
+    color: #007bff;
+    font-size: 16px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.file-upload-label:hover {
+    background: #007bff;
+    color: #ffffff;
+    border-color: #0056b3;
+}
+
+.file-upload-label input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Style the expiration date input group */
+#expirationGroup {
+    display: none;
+    width: 100%;
+}
+
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Style the submit button */
+button {
+    display: block;
+    width: 100%;
+    max-width: 300px; /* Consistent with the container */
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Style the message */
+#message {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Existing CSS... */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center; /* Center text in the container */
+}
+
+#linkSection {
+    text-align: center; /* Center text in the link section */
+}
+
+#fileInfoLink {
+    display: block; /* Make the link block-level for better layout */
+    margin: 10px 0; /* Add some spacing around the link */
+}
+
+button {
+    margin-top: 10px; /* Add space above the button */
+}
+/* Existing CSS... */
+
+button, .download-button {
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px 20px; /* Space inside the button */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline for links styled as buttons */
+    display: inline-block; /* Ensure proper spacing */
+    margin-top: 10px; /* Space above the button */
+}
+
+button:hover, .download-button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+button:disabled, .download-button:disabled {
+    background-color: #6c757d; /* Disabled button color */
+    cursor: not-allowed; /* Disabled cursor */
+}
+/* Existing CSS... */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.delete-button {
+    color: #ff0000;
+}
+
+.delete-button:hover {
+    color: #cc0000;
+}
+
+/* Existing CSS... */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.file-row {
+    border: 2px solid #007bff; /* Box border color */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 10px; /* Space between rows */
+    padding: 10px; /* Space inside the box */
+    background-color: #f9f9f9; /* Background color for the box */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+.file-row:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+    border-color: #0056b3; /* Darker border on hover */
+}
+
+.delete-button {
+    color: #ff0000;
+}
+
+.delete-button:hover {
+    color: #cc0000;
+}
+/* Existing CSS... */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.file-row {
+    border: 2px solid #007bff; /* Box border color */
+    border-radius: 12px; /* Rounded corners */
+    margin-bottom: 10px; /* Space between rows */
+    padding: 15px; /* Space inside the box */
+    background-color: #f9f9f9; /* Background color for the box */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+.file-row:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+    border-color: #0056b3; /* Darker border on hover */
+}
+
+button {
+    background-color: #007bff; /* Button color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Space inside the button */
+    font-size: 14px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline for links styled as buttons */
+    margin: 2px; /* Space between buttons */
+    display: inline-block; /* Ensure proper spacing */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red color for delete button */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker red for hover effect */
+}
+/* Existing CSS... */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.file-row {
+    border: 2px solid #007bff; /* Box border color */
+    border-radius: 12px; /* Rounded corners */
+    margin-bottom: 10px; /* Space between rows */
+    padding: 15px; /* Space inside the box */
+    background-color: #f9f9f9; /* Background color for the box */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+.file-row:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+    border-color: #0056b3; /* Darker border on hover */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.button:active {
+    background-color: #003d7a;
+    transform: scale(1);
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red color for delete button */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker red for hover effect */
+}
+
+.download-button {
+    background-color: #28a745; /* Green color for download button */
+}
+
+.download-button:hover {
+    background-color: #218838; /* Darker green for hover effect */
+}
+input[type="text"], input[type="password"], input[type="email"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, textarea:focus {
+    border-color: #007bff; /* Blue border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue shadow on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Styling for labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Styling for textareas */
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 100px; /* Minimum height */
+}
+
+/* Styling for submit buttons */
+input[type="submit"], button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover, button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+input[type="submit"]:active, button[type="submit"]:active {
+    background-color: #003d7a;
+}
+
+/* General form container styling */
+form {
+    margin: 20px 0;
+}
