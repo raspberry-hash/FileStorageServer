@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Information</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>File Information</h1>
+        <div id="fileInfo">
+            <p><strong>File Name:</strong> <span id="infoFileName"></span></p>
+            <p><strong>File Size:</strong> <span id="infoFileSize"></span> bytes</p>
+            <p><strong>Uploaded At:</strong> <span id="infoUploadTime"></span></p>
+            <p><strong>Uploader IP:</strong> <span id="infoUploaderIP"></span></p>
+            <a id="downloadLink" href="" target="_blank">Download File</a>
+            <button id="copyLinkButton">Copy Link</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const fileId = urlParams.get('id');
+            if (!fileId) {
+                document.getElementById('fileInfo').innerHTML = '<p>No file ID provided</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/file/${fileId}`);
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(errorText);
+                }
+                const fileInfo = await response.json();
+                displayFileInfo(fileInfo);
+            } catch (error) {
+                document.getElementById('fileInfo').innerHTML = `<p>Error fetching file info: ${error.message}</p>`;
+            }
+        });
+
+        function displayFileInfo(fileInfo) {
+            document.getElementById('infoFileName').textContent = fileInfo.filename;
+            document.getElementById('infoFileSize').textContent = fileInfo.size;
+            document.getElementById('infoUploadTime').textContent = new Date(fileInfo.uploadTime).toLocaleString();
+            document.getElementById('infoUploaderIP').textContent = fileInfo.ip;
+            document.getElementById('downloadLink').href = `/download/${fileInfo.id}`;
+        }
+
+        document.getElementById('copyLinkButton').addEventListener('click', () => {
+            const fileId = new URLSearchParams(window.location.search).get('id');
+            const fileInfoPage = `${window.location.origin}/file-info.html?id=${fileId}`;
+            navigator.clipboard.writeText(fileInfoPage).then(() => {
+                alert('Link copied to clipboard!');
+            }, (err) => {
+                console.error('Failed to copy link: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
